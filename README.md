@@ -1,3 +1,5 @@
+![sample](https://user-images.githubusercontent.com/59039044/126834515-b53a8a5d-7ba6-47e6-b32c-6aaee0b77221.png)
+
 # News-Plus
 
 App that display online news from GNews API

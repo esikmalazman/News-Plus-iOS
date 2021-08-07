@@ -21,3 +21,6 @@ App that display online news from GNews API
 
 - Retrieve more news with infinite/pagination
 - Offline news reader
+
+
+https://user-images.githubusercontent.com/59039044/128592009-ed9d7b4a-b954-4e9e-87c3-d50ecf6fe37c.mp4

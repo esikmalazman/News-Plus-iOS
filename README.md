@@ -10,11 +10,17 @@ App that display online news from GNews API
 2. Download image from url and load into UICollectionView
 3. Apply Apple Safari Services framework to allows user open selected news in the app from url.
 4. Secured API Key with XCconfig from being stolen
-5. Utilize URLSession to do networking session and retrieve API data
+5. Develop reusable network manager with URLSession for retrieve API data
+6. Customize error message with enum
+7. Use Result<> type to remove optionals ambiguity
+8. Apply @escaping clousure that will execute after network request complete
+9. Debugging with XCode breakpoints 
 
 ## Frameworks
 
+- Foundation
 - UIKit
+- URLSession
 - SafariServices
 
 ## Future Updates

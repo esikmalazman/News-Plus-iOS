@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct NewsData : Codable {
+struct NewsResponse : Codable {
     
-    let articles : [Article]
-    
+    let articles : [News]
 }
-struct Article : Codable {
+
+struct News : Codable {
     
     let title : String
     let description : String
@@ -20,7 +20,6 @@ struct Article : Codable {
     let image : String
     let publishedAt : String
     let source : Source
-    
 }
 
 struct Source : Codable {

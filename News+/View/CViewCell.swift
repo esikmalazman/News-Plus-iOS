@@ -7,27 +7,57 @@
 
 import UIKit
 
-class CViewCell: UICollectionViewCell {
+final class CViewCell: UICollectionViewCell {
     
+    //MARK:- Outlets
     @IBOutlet weak var newsImage: UIImageView!
     @IBOutlet weak var source: UILabel!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var date: UILabel!
     
+    //MARK:- Variables
+    private var dateFormatter : DateFormatter = {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
     
+    private let iso8601Formatter = ISO8601DateFormatter()
+    
+    //MARK:- Life Cycle
     override func layoutSubviews() {
         
         super.layoutSubviews()
         configureLayout()
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         configureForReuse()
     }
     
-    func configureLayout(){
+    func configureCell(data : News) {
+        title.text = data.title
+        desc.text = data.description
+        source.text = data.source.name
+        
+        newsImage.downloaded(from: data.image)
+        newsImage.contentMode = .scaleAspectFill
+        
+        // Convert damn ISO8601 to other format, https://developer.apple.com/forums/thread/660878
+        let isoDate = iso8601Formatter.date(from: data.publishedAt)
+        let formattedString = dateFormatter.string(from: isoDate ?? Date())
+        date.text = formattedString
+    }
+}
+
+//MARK:- Private Methods
+extension CViewCell {
+    
+    private func configureLayout(){
         
         contentView.layer.cornerRadius = 15
         contentView.layer.borderWidth = 1.0
@@ -43,7 +73,7 @@ class CViewCell: UICollectionViewCell {
         layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
     }
     
-    func configureForReuse(){
+    private func configureForReuse(){
         
         newsImage.image = nil
         source.text = nil

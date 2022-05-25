@@ -9,14 +9,14 @@ import UIKit
 
 final class CViewCell: UICollectionViewCell {
     
-    //MARK:- Outlets
+    //MARK: - Outlets
     @IBOutlet weak var newsImage: UIImageView!
     @IBOutlet weak var source: UILabel!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var date: UILabel!
     
-    //MARK:- Variables
+    //MARK: - Variables
     private var dateFormatter : DateFormatter = {
         
         let formatter = DateFormatter()
@@ -27,9 +27,8 @@ final class CViewCell: UICollectionViewCell {
     
     private let iso8601Formatter = ISO8601DateFormatter()
     
-    //MARK:- Life Cycle
+    //MARK: - Life Cycle
     override func layoutSubviews() {
-        
         super.layoutSubviews()
         configureLayout()
     }
@@ -54,7 +53,7 @@ final class CViewCell: UICollectionViewCell {
     }
 }
 
-//MARK:- Private Methods
+//MARK: - Private Methods
 extension CViewCell {
     
     private func configureLayout(){
@@ -74,7 +73,6 @@ extension CViewCell {
     }
     
     private func configureForReuse(){
-        
         newsImage.image = nil
         source.text = nil
         title.text = nil

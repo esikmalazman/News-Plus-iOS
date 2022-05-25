@@ -8,12 +8,11 @@
 import UIKit
 import SafariServices
 
-class NewsCollectionVC: UIViewController {
+final class NewsCollectionVC: UIViewController {
     
     let iso8601Formatter = ISO8601DateFormatter()
     
     var newsData = [News]()
-    
     var pageNumber = 1
     var fetchMoreNews = false
     

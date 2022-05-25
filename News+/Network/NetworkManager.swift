@@ -10,8 +10,8 @@ import Foundation
 final class NetworkManager {
     
     static let shared = NetworkManager()
-    
-    private let urlSession = URLSession(configuration: .default)
+    /// Assign protocol as protocol, allow us to swap differente implementation for URLSession
+    var urlSession : NetworkManagerContract = URLSession.shared
     private let baseNewsUrl = "https://gnews.io/api/v4/search?q="
     
     private var apiKey : String {
@@ -21,7 +21,8 @@ final class NetworkManager {
         }
     }
     
-    func fetchGenericData <T : Decodable> (topic : String, completion : @escaping ((Result<T,NError>)-> Void)) {
+    func fetchGenericData <T : Decodable> (topic : String,
+                                           completion : @escaping ((Result<T,NError>)-> Void)) {
         
         let endPoint = baseNewsUrl + "\(topic)&lang=en&token=\(apiKey)"
         
@@ -29,10 +30,8 @@ final class NetworkManager {
             fatalError("Could not convert url string to type URL")
         }
         
-        debugPrint(url)
-        
-        let task =  URLSession.shared.dataTask(with: url) { data, response, error in
-            
+        let urlRequest = URLRequest(url: url)
+        let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             if let _ = error  {
                 completion(.failure(.unableToComplete))
                 return

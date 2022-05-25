@@ -21,6 +21,11 @@ final class MockURLSession: NetworkManagerContract {
         
         return DummyURLSessionDataTask()
     }
+    
+    func verifyDataTask(with urlRequest : URLRequest) {
+        XCTAssertEqual(dataTaskCallCount, 1)
+        XCTAssertEqual(dataTaskArguement.first, urlRequest)
+    }
 }
 
 

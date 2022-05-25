@@ -23,11 +23,10 @@ final class MockURLSession: NetworkManagerContract {
     }
     
     func verifyDataTask(with urlRequest : URLRequest, file : StaticString = #file, line : UInt = #line) {
-        XCTAssertEqual(dataTaskCallCount, 2, file: file, line: line)
+        XCTAssertEqual(dataTaskCallCount, 1, file: file, line: line)
         XCTAssertEqual(dataTaskArguement.first, urlRequest, file: file, line: line)
     }
 }
-
 
 /// Subclass of URLSessionDataTask class to ovveride the implementation
 ///

@@ -13,7 +13,7 @@
         <!--News+-->
         <scene sceneID="Ymg-Z4-0fF">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="xTh-Wb-Yrd" customClass="NewsCollectionVC" customModule="News_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsCollectionVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xTh-Wb-Yrd" customClass="NewsCollectionVC" customModule="News_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yoc-KX-hhS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

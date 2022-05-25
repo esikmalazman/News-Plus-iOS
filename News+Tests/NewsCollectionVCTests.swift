@@ -24,8 +24,7 @@ final class NewsCollectionVCTests: XCTestCase {
     }
     
     func test_loadViewController_shouldMakeDataTaskCalledOnce() {
-        XCTAssertEqual(mockURLsession.dataTaskCallCount, 1)
         let request = URLRequest(url: URL(string: "https://gnews.io/api/v4/search?q=World&lang=en&token=\(mockURLsession.apiKey)")!)
-        XCTAssertEqual(mockURLsession.dataTaskArguement.first, request)
+        mockURLsession.verifyDataTask(with: request)
     }
 }

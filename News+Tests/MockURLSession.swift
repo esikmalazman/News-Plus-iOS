@@ -22,9 +22,9 @@ final class MockURLSession: NetworkManagerContract {
         return DummyURLSessionDataTask()
     }
     
-    func verifyDataTask(with urlRequest : URLRequest, file : StaticString = #file, line : UInt8 = #line) {
-        XCTAssertEqual(dataTaskCallCount, 1)
-        XCTAssertEqual(dataTaskArguement.first, urlRequest)
+    func verifyDataTask(with urlRequest : URLRequest, file : StaticString = #file, line : UInt = #line) {
+        XCTAssertEqual(dataTaskCallCount, 2, file: file, line: line)
+        XCTAssertEqual(dataTaskArguement.first, urlRequest, file: file, line: line)
     }
 }
 

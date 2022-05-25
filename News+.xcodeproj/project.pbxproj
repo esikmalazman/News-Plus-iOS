@@ -17,8 +17,8 @@
 		7F588CA826C952680064B1A3 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F588CA726C952680064B1A3 /* Result.swift */; };
 		7F59742E26A4F7C4003CDC96 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F59742D26A4F7C4003CDC96 /* UIImageExtensions.swift */; };
 		7FCD4FCB269FD6A300824E27 /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD4FCA269FD6A300824E27 /* NewsResponse.swift */; };
-		7FE494DB283DAB9E003E2963 /* News_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE494DA283DAB9E003E2963 /* News_Tests.swift */; };
 		7FE494E2283DABCD003E2963 /* NetworkManagerContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE494E1283DABCD003E2963 /* NetworkManagerContract.swift */; };
+		7FE494E4283DAC89003E2963 /* NewsCollectionVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE494E3283DAC89003E2963 /* NewsCollectionVCTests.swift */; };
 		7FE4F04026A4106800CDBBAB /* CViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4F03F26A4106800CDBBAB /* CViewCell.swift */; };
 		7FE4F04326A4118900CDBBAB /* NewsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4F04226A4118900CDBBAB /* NewsCollectionVC.swift */; };
 /* End PBXBuildFile section */
@@ -48,8 +48,8 @@
 		7F59742D26A4F7C4003CDC96 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		7FCD4FCA269FD6A300824E27 /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
 		7FE494D8283DAB9E003E2963 /* News+Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "News+Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FE494DA283DAB9E003E2963 /* News_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News_Tests.swift; sourceTree = "<group>"; };
 		7FE494E1283DABCD003E2963 /* NetworkManagerContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerContract.swift; sourceTree = "<group>"; };
+		7FE494E3283DAC89003E2963 /* NewsCollectionVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionVCTests.swift; sourceTree = "<group>"; };
 		7FE4F03F26A4106800CDBBAB /* CViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CViewCell.swift; sourceTree = "<group>"; };
 		7FE4F04226A4118900CDBBAB /* NewsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,7 +163,7 @@
 		7FE494D9283DAB9E003E2963 /* News+Tests */ = {
 			isa = PBXGroup;
 			children = (
-				7FE494DA283DAB9E003E2963 /* News_Tests.swift */,
+				7FE494E3283DAC89003E2963 /* NewsCollectionVCTests.swift */,
 			);
 			path = "News+Tests";
 			sourceTree = "<group>";
@@ -220,6 +220,7 @@
 					};
 					7FE494D7283DAB9E003E2963 = {
 						CreatedOnToolsVersion = 13.3.1;
+						LastSwiftMigration = 1330;
 						TestTargetID = 7F0E82E3269FC5BC00FA607E;
 					};
 				};
@@ -285,7 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FE494DB283DAB9E003E2963 /* News_Tests.swift in Sources */,
+				7FE494E4283DAC89003E2963 /* NewsCollectionVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,14 +479,21 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esikmalazman.News-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/News+.app/News+";
@@ -497,10 +505,16 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.esikmalazman.News-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

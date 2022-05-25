@@ -12,6 +12,7 @@ final class NetworkManager {
     static let shared = NetworkManager()
     /// Assign protocol as protocol, allow us to swap differente implementation for URLSession
     var urlSession : NetworkManagerContract = URLSession.shared
+    
     private let baseNewsUrl = "https://gnews.io/api/v4/search?q="
     
     private var apiKey : String {
@@ -31,7 +32,7 @@ final class NetworkManager {
         }
         
         let urlRequest = URLRequest(url: url)
-        let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+       let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             if let _ = error  {
                 completion(.failure(.unableToComplete))
                 return
@@ -51,7 +52,7 @@ final class NetworkManager {
                 print("Error to decode : \(error.localizedDescription)")
             }
         }
-        task.resume()
+            task.resume()
     }
 }
 

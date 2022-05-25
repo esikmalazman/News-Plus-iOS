@@ -15,6 +15,7 @@ final class NewsCollectionVC: UIViewController {
     var newsData = [News]()
     var pageNumber = 1
     var fetchMoreNews = false
+    var networkManager = NetworkManager.shared
     
     @IBOutlet weak var newsSegments: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -49,7 +50,7 @@ final class NewsCollectionVC: UIViewController {
     
     func getNews(topic : String = "World") {
         
-        NetworkManager.shared.fetchGenericData(topic: topic) { (result : Result<NewsResponse, NError>) in
+        networkManager.fetchGenericData(topic: topic) { (result : Result<NewsResponse, NError>) in
             switch result {
             case .success(let news):
                 self.updateUI(with: news.articles)

@@ -14,7 +14,7 @@ class NewsCollectionVC: UIViewController {
     
     var newsData = [News]() {
         didSet {
-            handleResults(newsData) 
+            handleResults(newsData)
         }
     }
     
@@ -80,10 +80,22 @@ class NewsCollectionVC: UIViewController {
         }
     }
     
+    func openSafariVC(_ url : String) {
+        guard let url = URL(string: url) else {
+            print("INVALID URL")
+            return
+        }
+        
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true)
+    }
     
     @IBAction func newsDidSelect(_ sender: UISegmentedControl) {
         
-        guard let segmentsTitle = sender.titleForSegment(at: newsSegments.selectedSegmentIndex) else {fatalError("There no segmented found") }
+        guard let segmentsTitle = sender.titleForSegment(
+            at: newsSegments.selectedSegmentIndex) else {
+            fatalError("There no segmented found")
+        }
         
         newsData = []
         getNews(topic: segmentsTitle)
@@ -116,13 +128,8 @@ extension NewsCollectionVC : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let newsURLString = newsData[indexPath.row].url
-        guard let newsURL = URL(string: newsURLString) else {
-            return
-        }
-        // Provide VC to run url in app
-        let SafariVC = SFSafariViewController(url: newsURL)
-        // Present the news
-        present(SafariVC, animated: true, completion: nil)
+        print("newsURLString : \(newsURLString)")
+        openSafariVC(newsURLString)
     }
 }
 

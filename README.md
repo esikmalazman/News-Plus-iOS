@@ -22,6 +22,7 @@ App that display online news from GNews API
 - UIKit
 - URLSession
 - SafariServices
+- XCTest
 
 ## Future Updates
 

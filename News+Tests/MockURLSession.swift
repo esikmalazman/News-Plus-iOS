@@ -6,6 +6,8 @@ final class MockURLSession: NetworkManagerContract {
  
     var dataTaskCallCount = 0
     var dataTaskArguement = [URLRequest]()
+    var dataTaskArguementCompletionHandler = [(Data?, URLResponse?, Error?)->Void]()
+    
     var apiKey : String {
         get {
             guard let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String else { fatalError("No API_KEY found")}
@@ -18,6 +20,7 @@ final class MockURLSession: NetworkManagerContract {
         
         dataTaskCallCount = dataTaskCallCount + 1
         dataTaskArguement.append(request)
+        dataTaskArguementCompletionHandler.append(completionHandler)
         
         return DummyURLSessionDataTask()
     }
@@ -34,4 +37,12 @@ private class DummyURLSessionDataTask : URLSessionDataTask {
     override func resume() {
         /// Ovveride default implementation
     }
+}
+
+
+struct TestError : LocalizedError {
+    let message : String
+
+    var errorDescription: String? {message}
+    
 }

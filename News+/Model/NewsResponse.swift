@@ -8,21 +8,18 @@
 import Foundation
 
 struct NewsResponse : Decodable {
-    
     let articles : [News]
 }
 
-struct News : Decodable {
-    
+struct News : Decodable, Equatable {
     let title : String
     let description : String
-    let url : URL
+    let url : String
     let image : String
     let publishedAt : String
     let source : Source
 }
 
-struct Source : Decodable {
-    
+struct Source : Decodable, Equatable {
     let name : String
 }

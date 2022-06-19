@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,8 @@
 		7FE4F04026A4106800CDBBAB /* CViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4F03F26A4106800CDBBAB /* CViewCell.swift */; };
 		7FE4F04326A4118900CDBBAB /* NewsCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4F04226A4118900CDBBAB /* NewsCollectionVC.swift */; };
 		7FF9CD7F285EA132008E8808 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF9CD7E285EA132008E8808 /* TestHelpers.swift */; };
+		7FF9CD81285EABFA008E8808 /* ViewControllerPresentationSpy.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF9CD80285EABFA008E8808 /* ViewControllerPresentationSpy.xcframework */; };
+		7FF9CD83285EAC10008E8808 /* ViewControllerPresentationSpy.xcframework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7FF9CD80285EABFA008E8808 /* ViewControllerPresentationSpy.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,19 @@
 			remoteInfo = "News+";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7FF9CD82285EAC06008E8808 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				7FF9CD83285EAC10008E8808 /* ViewControllerPresentationSpy.xcframework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7F0E82E4269FC5BC00FA607E /* News+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "News+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +71,7 @@
 		7FE4F03F26A4106800CDBBAB /* CViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CViewCell.swift; sourceTree = "<group>"; };
 		7FE4F04226A4118900CDBBAB /* NewsCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionVC.swift; sourceTree = "<group>"; };
 		7FF9CD7E285EA132008E8808 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		7FF9CD80285EABFA008E8808 /* ViewControllerPresentationSpy.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ViewControllerPresentationSpy.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FF9CD81285EABFA008E8808 /* ViewControllerPresentationSpy.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +184,7 @@
 		7FE494D9283DAB9E003E2963 /* News+Tests */ = {
 			isa = PBXGroup;
 			children = (
+				7FF9CD80285EABFA008E8808 /* ViewControllerPresentationSpy.xcframework */,
 				7FE494E3283DAC89003E2963 /* NewsCollectionVCTests.swift */,
 				7FE494E5283DAD94003E2963 /* MockURLSession.swift */,
 				7FF9CD7E285EA132008E8808 /* TestHelpers.swift */,
@@ -201,6 +219,7 @@
 				7FE494D4283DAB9E003E2963 /* Sources */,
 				7FE494D5283DAB9E003E2963 /* Frameworks */,
 				7FE494D6283DAB9E003E2963 /* Resources */,
+				7FF9CD82285EAC06008E8808 /* CopyFiles */,
 			);
 			buildRules = (
 			);

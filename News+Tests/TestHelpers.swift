@@ -23,3 +23,14 @@ func cellForItemAt(_ collectionView : UICollectionView,
     let cell = collectionView.dataSource?.collectionView(collectionView, cellForItemAt: indexPath)
     return cell
 }
+
+func didSelectItemAt(_ collectionView : UICollectionView, row : Int, section : Int = 0 ) {
+    let indexPath = IndexPath(row: row, section: section)
+    collectionView.delegate?.collectionView?(collectionView, didSelectItemAt: indexPath)
+}
+
+//MARK: - Utilities Test Helpers
+func putViewInWindow(_ vc : UIViewController) {
+    let window = UIWindow()
+    window.addSubview(vc.view)
+}

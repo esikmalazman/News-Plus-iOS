@@ -1,5 +1,6 @@
 @testable import News_
 import XCTest
+import ViewControllerPresentationSpy
 
 final class NewsCollectionVCTests: XCTestCase {
     
@@ -38,9 +39,6 @@ final class NewsCollectionVCTests: XCTestCase {
         /// Pass jsonData, 200 status code. no error
         mockURLsession.dataTaskArguementCompletionHandler
             .first?(jsonData(), response(statusCode: 200), nil)
-        
-        
-        
         
         waitForExpectations(timeout: 0.01)
         let source = Source(name: "News+ Test")
@@ -127,20 +125,41 @@ final class NewsCollectionVCTests: XCTestCase {
         XCTAssertEqual(cell.desc.text, "Description 2")
     }
     
+    func test_didSelectItemAt_withRow0AndValidURL_shouldPresentSafariVC() {
+        let presentationVerifier = PresentationVerifier()
+        sut.newsData = [
+            createNews(1)
+        ]
+        
+        didSelectItemAt(sut.collectionView, row: 0)
+
+        presentationVerifier.verify(animated: true, presentingViewController: sut)
+    }
     
-    
-    
-    
-    
+    func test_didSelectItemAt_withRow2AndValidURL_shouldPresentSafariVC() {
+        let presentationVerifier = PresentationVerifier()
+        sut.newsData = [
+            createNews(1),
+            createNews(2),
+            createNews(3, url: "https:/dummy3.com")
+        ]
+        
+        didSelectItemAt(sut.collectionView, row: 2)
+
+        presentationVerifier.verify(animated: true, presentingViewController: sut)
+    }  
 }
+
+
 
 
 //MARK: - Helpers
 private extension NewsCollectionVCTests {
-    func createNews(_ number : Int) -> News {
+    func createNews(_ number : Int,
+                    url : String = "https://dummy") -> News {
         return News(title: "News \(number)",
                     description: "Description \(number)",
-                    url: "URL \(number)",
+                    url: url,
                     image: "Image \(number)",
                     publishedAt: "Published At \(number)",
                     source: Source(name: "Source \(number)"))

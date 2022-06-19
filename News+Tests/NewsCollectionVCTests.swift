@@ -77,55 +77,55 @@ final class NewsCollectionVCTests: XCTestCase {
     }
     
     
-//    func test_NewsCollectionViewDelegates_shouldBeConnected() {
-//        XCTAssertNotNil(sut.collectionView.dataSource, "dataSource")
-//        XCTAssertNotNil(sut.collectionView.delegate, "delegate")
-//    }
-//    
-//    func test_numberOfItemsInSection_with3NewsDataInSection0_shouldHave3Row() {
-//        sut.newsData = [
-//            createNews(1),
-//            createNews(2),
-//            createNews(3)
-//        ]
-//        
-//        XCTAssertEqual(numberOfItemsInSection(sut.collectionView), 3)
-//    }
-//    
-//    func test_numberOfItemsInSection_withNoNewsDataInSection0_shouldNotHaveRow() {
-//        sut.newsData = []
-//        
-//        XCTAssertEqual(numberOfItemsInSection(sut.collectionView), 0)
-//    }
-//    
-//    func test_cellForItemAt_withRow0_shouldHavePropertiesNews1() {
-//        sut.newsData = [createNews(1)]
-//        
-//        guard let cell = cellForItemAt(sut.collectionView, row: 0) as? CViewCell else {
-//            XCTFail("Could not cast to \(CViewCell.self)")
-//            return
-//        }
-//        
-//        XCTAssertEqual(cell.title.text, "News 1")
-//        XCTAssertEqual(cell.source.text, "Source 1")
-//        XCTAssertEqual(cell.desc.text, "Description 1")
-//    }
-//    
-//    func test_cellForItemAt_withRow1_shouldHavePropertiesNews2() {
-//        sut.newsData = [
-//        createNews(1),
-//        createNews(2)
-//        ]
-//        
-//        guard let cell = cellForItemAt(sut.collectionView, row: 1) as? CViewCell else {
-//            XCTFail("Could not cast to \(CViewCell.self)")
-//                    return
-//        }
-//        
-//        XCTAssertEqual(cell.title.text, "News 2")
-//        XCTAssertEqual(cell.source.text, "Source 2")
-//        XCTAssertEqual(cell.desc.text, "Description 2")
-//    }
+    func test_NewsCollectionViewDelegates_shouldBeConnected() {
+        XCTAssertNotNil(sut.collectionView.dataSource, "dataSource")
+        XCTAssertNotNil(sut.collectionView.delegate, "delegate")
+    }
+    
+    func test_numberOfItemsInSection_with3NewsDataInSection0_shouldHave3Row() {
+        sut.newsData = [
+            createNews(1),
+            createNews(2),
+            createNews(3)
+        ]
+        
+        XCTAssertEqual(numberOfItemsInSection(sut.collectionView), 3)
+    }
+    
+    func test_numberOfItemsInSection_withNoNewsDataInSection0_shouldNotHaveRow() {
+        sut.newsData = []
+        
+        XCTAssertEqual(numberOfItemsInSection(sut.collectionView), 0)
+    }
+    
+    func test_cellForItemAt_withRow0_shouldHavePropertiesNews1() {
+        sut.newsData = [createNews(1)]
+        
+        guard let cell = cellForItemAt(sut.collectionView, row: 0) as? CViewCell else {
+            XCTFail("Could not cast to \(CViewCell.self)")
+            return
+        }
+        
+        XCTAssertEqual(cell.title.text, "News 1")
+        XCTAssertEqual(cell.source.text, "Source 1")
+        XCTAssertEqual(cell.desc.text, "Description 1")
+    }
+    
+    func test_cellForItemAt_withRow1_shouldHavePropertiesNews2() {
+        sut.newsData = [
+        createNews(1),
+        createNews(2)
+        ]
+        
+        guard let cell = cellForItemAt(sut.collectionView, row: 1) as? CViewCell else {
+            XCTFail("Could not cast to \(CViewCell.self)")
+                    return
+        }
+        
+        XCTAssertEqual(cell.title.text, "News 2")
+        XCTAssertEqual(cell.source.text, "Source 2")
+        XCTAssertEqual(cell.desc.text, "Description 2")
+    }
     
     
     

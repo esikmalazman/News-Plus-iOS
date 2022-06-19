@@ -32,7 +32,7 @@ final class NetworkManager {
         }
         
         let urlRequest = URLRequest(url: url)
-       let task = urlSession.dataTask(with: urlRequest) { data, response, error in
+        let task = urlSession.dataTask(with: urlRequest) { data, response, error in
             if let _ = error  {
                 completion(.failure(.unableToComplete))
                 return
@@ -42,6 +42,7 @@ final class NetworkManager {
                 completion(.failure(.invalidData))
                 return
             }
+            print(url)
             
             do {
                 let object = try JSONDecoder().decode(T.self, from: safeData)
@@ -52,7 +53,7 @@ final class NetworkManager {
                 print("Error to decode : \(error.localizedDescription)")
             }
         }
-            task.resume()
+        task.resume()
     }
 }
 

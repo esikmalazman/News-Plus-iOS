@@ -15,6 +15,7 @@ App that display online news from GNews API
 7. Use Result<> type to remove optionals ambiguity
 8. Apply @escaping clousure that will execute after network request complete
 9. Debugging with XCode breakpoints 
+10. Unit Test Networking & CollectionView delegates
 
 ## Frameworks
 

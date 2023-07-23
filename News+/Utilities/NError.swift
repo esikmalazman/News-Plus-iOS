@@ -9,7 +9,6 @@ import Foundation
 
 // Custom error messages, need to adopt Error protocol
 enum NError : String, Error {
-    
     case invalidTopic = "The topic requested is invalid request. Please try again"
     case invalidResponse = "Invalid response from the server. Please try again"
     case invalidData = "The data received from server was invalid. Please Try Again"

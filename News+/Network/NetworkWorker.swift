@@ -7,9 +7,9 @@
 
 import Foundation
 
-final class NetworkManager {
+final class NetworkWorker {
     
-    static let shared = NetworkManager()
+    static let shared = NetworkWorker()
     /// Assign protocol as protocol, allow us to swap differente implementation for URLSession
     var urlSession : NetworkManagerContract = URLSession.shared
     
@@ -56,6 +56,3 @@ final class NetworkManager {
         task.resume()
     }
 }
-
-
-

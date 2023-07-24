@@ -7,26 +7,41 @@
 
 import UIKit
 
-// Allow to download image from URL Asyncronously
+let imageCache = NSCache< NSString, UIImage>()
+
 extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-            else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
+    /// Allow to download image asyncronously, store downloaded image into cache and download new image if image in cache not availabel
+    func downloadImage(fromURLString urlString : String) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        self.image = nil
+        
+        /// Retrieve image from cache if available, if not download new image
+        if let imageFromCache = imageCache.object(forKey: NSString(string: urlString)) {
+            self.image = imageFromCache
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let _ = error {
+                return
             }
-        }.resume()
-    }
-    
-    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode)
+            
+            guard let data = data else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                
+                let imageToCache = UIImage(data: data)
+                /// Store downloaded image data into cache
+                imageCache.setObject(imageToCache ?? UIImage(named: "bg-news+")!, forKey: NSString(string: urlString))
+                
+                self.image = imageToCache
+            }
+        }
+        task.resume()
     }
 }
-

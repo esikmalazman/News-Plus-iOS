@@ -13,12 +13,14 @@ protocol NewsCollectionBusinessLogic {
 
 final class NewsCollectionInteractor {
     var presenter : NewsCollectionPresentationLogic?
-    var networkManager = NetworkWorker.shared
+    var networkWorker = NewsNetworkWorker()
 }
 
 extension NewsCollectionInteractor : NewsCollectionBusinessLogic  {
     func loadNews(request: NewsCollectionModel.LoadNews.Request) {
-        networkManager.fetchGenericData(topic: request.topic.title) { (result : Result<NewsResponse, NError>) in
+        Task {
+            let result = await networkWorker.fetchNews(for:request.topic.title)
+            
             switch result {
             case .success(let data):
                 let response = NewsCollectionModel.LoadNews.Response(newsCollectionData: data)

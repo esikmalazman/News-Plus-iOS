@@ -26,13 +26,14 @@ final class CViewCell: UICollectionViewCell {
     }()
     
     private let iso8601Formatter = ISO8601DateFormatter()
+    static let identifier = "cell"
     
     //MARK: - Life Cycle
     override func layoutSubviews() {
         super.layoutSubviews()
         configureLayout()
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         configureForReuse()
@@ -43,7 +44,7 @@ final class CViewCell: UICollectionViewCell {
         desc.text = data.description
         source.text = data.source.name
         
-        newsImage.downloaded(from: data.image)
+        newsImage.downloadImage(fromURLString:data.image)
         newsImage.contentMode = .scaleAspectFill
         
         // Convert damn ISO8601 to other format, https://developer.apple.com/forums/thread/660878

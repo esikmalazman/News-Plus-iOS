@@ -71,7 +71,7 @@ extension NewsCollectionVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let listOfNews = newsDataStore.news[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CViewCell.identifier, for: indexPath) as! CViewCell
         cell.configureCell(data: listOfNews)
         
         return cell

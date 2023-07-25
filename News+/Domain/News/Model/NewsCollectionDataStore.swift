@@ -9,6 +9,7 @@ import Foundation
 
 protocol NewsCollectionDataStoreDelegate {
     func refreshNewsCollection()
+    func displayNewsCollectionError(_ error: String)
 }
 
 final class NewsCollectionDataStore {
@@ -17,6 +18,12 @@ final class NewsCollectionDataStore {
     var news : [News] = [] {
         didSet {
             delegate?.refreshNewsCollection()
+        }
+    }
+    
+    var error : String = "" {
+        didSet {
+            delegate?.displayNewsCollectionError(error)
         }
     }
 }

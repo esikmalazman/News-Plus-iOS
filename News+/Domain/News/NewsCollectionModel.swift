@@ -14,11 +14,13 @@ enum NewsCollectionModel {
         }
         
         struct Response {
-            var newsCollectionData : NewsResponse
+            var newsCollectionData : NewsResponse?
+            var error : String?
         }
         
         struct ViewModel {
             var newsCollection : [News]
+            var error : String?
         }
     }
 }

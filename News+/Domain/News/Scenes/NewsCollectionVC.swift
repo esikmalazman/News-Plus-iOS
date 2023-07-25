@@ -20,9 +20,6 @@ final class NewsCollectionVC: UIViewController {
         }
     }
     
-    var pageNumber = 1
-    var fetchMoreNews = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureVC()
@@ -56,15 +53,12 @@ extension NewsCollectionVC {
         }
         
         self.selectedNewsSection = category
-        loadNews()
     }
 }
 
 // MARK:  UICollectionViewDataSource
 extension NewsCollectionVC : UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return newsDataStore.news.count
     }
     
@@ -82,7 +76,6 @@ extension NewsCollectionVC : UICollectionViewDataSource {
 extension NewsCollectionVC : UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let newsURLString = newsDataStore.news[indexPath.row].url
         openSafariVC(newsURLString)
     }
@@ -93,8 +86,11 @@ extension NewsCollectionVC : NewsCollectionDataStoreDelegate {
     func refreshNewsCollection() {
         collectionView.reloadData()
     }
+    
+    func displayNewsCollectionError(_ error: String) {
+        showErrorAlert(error)
+    }
 }
-
 
 private extension NewsCollectionVC {
     func configureNavBar() {
@@ -112,5 +108,16 @@ private extension NewsCollectionVC {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    func showErrorAlert(_ error: String) {
+        let alert = UIAlertController(title: "Network Error", message: error, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        let refreshAction = UIAlertAction(title: "Refresh", style: .default) { [weak self] _ in
+            self?.loadNews()
+        }
+        alert.addAction(okAction)
+        alert.addAction(refreshAction)
+        self.present(alert, animated: true)
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol NewsCollectionPresentationLogic {
     func presentNewsCollection(response : NewsCollectionModel.LoadNews.Response)
+    func presentNewsCollectionError(response : NewsCollectionModel.LoadNews.Response)
 }
 
 final class NewsCollectionPresenter {
@@ -17,7 +18,12 @@ final class NewsCollectionPresenter {
 
 extension NewsCollectionPresenter : NewsCollectionPresentationLogic {
     func presentNewsCollection(response: NewsCollectionModel.LoadNews.Response) {
-        let viewModel = NewsCollectionModel.LoadNews.ViewModel(newsCollection: response.newsCollectionData.articles)
+        let viewModel = NewsCollectionModel.LoadNews.ViewModel(newsCollection: response.newsCollectionData?.articles ?? [])
         view?.displayNewsCollection(viewModel:viewModel)
+    }
+    
+    func presentNewsCollectionError(response: NewsCollectionModel.LoadNews.Response) {
+        let viewModel = NewsCollectionModel.LoadNews.ViewModel(newsCollection: [], error: response.error)
+        view?.displayErrorNewsCollection(viewModel: viewModel)
     }
 }

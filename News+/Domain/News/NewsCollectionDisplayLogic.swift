@@ -9,12 +9,19 @@ import Foundation
 
 protocol NewsCollectionDisplayLogic {
     func displayNewsCollection(viewModel:NewsCollectionModel.LoadNews.ViewModel)
+    func displayErrorNewsCollection(viewModel: NewsCollectionModel.LoadNews.ViewModel)
 }
 
 extension NewsCollectionVC : NewsCollectionDisplayLogic {
     func displayNewsCollection(viewModel: NewsCollectionModel.LoadNews.ViewModel) {
         DispatchQueue.main.async {
             self.newsDataStore.news.append(contentsOf: viewModel.newsCollection)
+        }
+    }
+    
+    func displayErrorNewsCollection(viewModel: NewsCollectionModel.LoadNews.ViewModel) {
+        DispatchQueue.main.async {
+            self.newsDataStore.error = viewModel.error ?? ""
         }
     }
 }

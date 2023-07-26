@@ -11,18 +11,18 @@ enum Category : String {
     case world
     case sports
     case tech
-    case economy
+    case business
     
     var title : String {
         switch self {
         case .world:
-            return "World"
+            return "world"
         case .sports:
-            return "Sports"
+            return "sports"
         case .tech:
-            return "Tech"
-        case .economy:
-            return "Economy"
+            return "technology"
+        case .business:
+            return "business"
         }
     }
 }

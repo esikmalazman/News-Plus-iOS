@@ -26,7 +26,7 @@ extension NewsCollectionInteractor : NewsCollectionBusinessLogic  {
                 let response = NewsCollectionModel.LoadNews.Response(newsCollectionData: data)
                 self.presenter?.presentNewsCollection(response: response)
             case .failure(let failure):
-                let response = NewsCollectionModel.LoadNews.Response(error: failure.localizedDescription)
+                let response = NewsCollectionModel.LoadNews.Response(error: failure.rawValue)
                 self.presenter?.presentNewsCollectionError(response:response)
                 debugPrint("Fail to fetch news collection data : \(failure.localizedDescription)")
             }

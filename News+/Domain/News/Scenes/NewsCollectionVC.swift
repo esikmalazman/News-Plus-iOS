@@ -42,7 +42,7 @@ final class NewsCollectionVC: UIViewController {
 extension NewsCollectionVC {
     @IBAction func newsDidSelect(_ sender: UISegmentedControl) {
         newsDataStore.news = []
-
+        
         let segmentTitle = sender.titleForSegment(
             at: newsSegments.selectedSegmentIndex) ?? ""
         
@@ -61,7 +61,7 @@ extension NewsCollectionVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let listOfNews = newsDataStore.news[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CViewCell.identifier, for: indexPath) as! CViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCellCollectionViewCell.identifier, for: indexPath) as! NewsCellCollectionViewCell
         cell.configureCell(data: listOfNews)
         
         return cell
@@ -90,17 +90,23 @@ extension NewsCollectionVC : NewsCollectionDataStoreDelegate {
 
 private extension NewsCollectionVC {
     func configureNavBar() {
+        title = "News+"
+        
         // Set navbar to be transparent
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         
         // Set navbar title attributes
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navBarColor]
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navBarColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.navBarColor]
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.navBarColor]
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        
     }
     
     func setupCollectionView() {
+        collectionView.register(NewsCellCollectionViewCell.nib(), forCellWithReuseIdentifier: NewsCellCollectionViewCell.identifier)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self

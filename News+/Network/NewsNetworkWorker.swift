@@ -13,7 +13,7 @@ enum Endpoint {
     var url : String {
         switch self {
         case .search(let topic):
-            return "https://gnews.io/api/v4/search?q=\(topic)&lang=en&token="
+            return "https://gnews.io/api/v4/search?q=\(topic)&lang=en&country=sg&apikey="
         }
     }
 }

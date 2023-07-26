@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsCollectionVC" customModule="News_" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="O2X-uU-1ye" id="AKf-9Z-qx4"/>
+                <outlet property="newsSegments" destination="WPX-Mk-KGi" id="SDV-eM-vFN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WPX-Mk-KGi">
+                    <rect key="frame" x="0.0" y="59" width="393" height="32"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <segments>
+                        <segment title="World"/>
+                        <segment title="Sports"/>
+                        <segment title="Tech"/>
+                        <segment title="Business"/>
+                    </segments>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="selectedSegmentTintColor" name="NavbarColor"/>
+                    <connections>
+                        <action selector="newsDidSelect:" destination="-1" eventType="valueChanged" id="Yda-QP-rJH"/>
+                    </connections>
+                </segmentedControl>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="O2X-uU-1ye">
+                    <rect key="frame" x="0.0" y="100" width="393" height="752"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7E5-2N-2Ps">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="O2X-uU-1ye" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3TW-Ma-nSB"/>
+                <constraint firstItem="O2X-uU-1ye" firstAttribute="top" secondItem="WPX-Mk-KGi" secondAttribute="bottom" constant="10" id="Bd6-fG-Azv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WPX-Mk-KGi" secondAttribute="trailing" id="Ekp-9f-Rda"/>
+                <constraint firstAttribute="bottom" secondItem="O2X-uU-1ye" secondAttribute="bottom" id="JBO-1n-coP"/>
+                <constraint firstItem="WPX-Mk-KGi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Kbb-Ue-KuM"/>
+                <constraint firstItem="WPX-Mk-KGi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Mph-6Z-Tiz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="O2X-uU-1ye" secondAttribute="trailing" id="tTL-hB-i2V"/>
+            </constraints>
+            <point key="canvasLocation" x="240" y="-53"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="NavbarColor">
+            <color red="0.17299999296665192" green="0.49000000953674316" blue="0.62699997425079346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

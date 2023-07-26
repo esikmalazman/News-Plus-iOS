@@ -180,6 +180,7 @@
 				7F990D612A6DDD6A004E21BA /* Scenes */,
 				7FCD4FD026A0166D00824E27 /* Model */,
 				7F990D632A6DDD9D004E21BA /* NewsCollectionModel.swift */,
+				7F990D5F2A6DDD51004E21BA /* NewsCollectionDataStore.swift */,
 				7F990D652A6DDDEF004E21BA /* NewsCollectionInteractor.swift */,
 				7F990D672A6DDE0F004E21BA /* NewsCollectionPresenter.swift */,
 				7F990D692A6DDE2C004E21BA /* NewsCollectionDisplayLogic.swift */,
@@ -217,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				7FCD4FCA269FD6A300824E27 /* NewsResponse.swift */,
-				7F990D5F2A6DDD51004E21BA /* NewsCollectionDataStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

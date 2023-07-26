@@ -42,15 +42,11 @@ final class NewsCollectionVC: UIViewController {
 extension NewsCollectionVC {
     @IBAction func newsDidSelect(_ sender: UISegmentedControl) {
         newsDataStore.news = []
+
+        let segmentTitle = sender.titleForSegment(
+            at: newsSegments.selectedSegmentIndex) ?? ""
         
-        guard let segmentsTitle = sender.titleForSegment(
-            at: newsSegments.selectedSegmentIndex) else {
-            fatalError("There no segmented found")
-        }
-        
-        guard let category = Category(rawValue: segmentsTitle.lowercased()) else {
-            fatalError("Invalid category found")
-        }
+        let category = Category(rawValue: segmentTitle.lowercased()) ?? .world
         
         self.selectedNewsSection = category
     }

@@ -18,7 +18,6 @@ final class CViewCell: UICollectionViewCell {
     
     //MARK: - Variables
     private var dateFormatter : DateFormatter = {
-        
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
         formatter.locale = Locale(identifier: "en_US_POSIX")
